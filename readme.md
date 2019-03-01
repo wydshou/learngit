@@ -231,6 +231,10 @@ $ ssh-keygen -t rsa -C  "youremail@example.com"
 ```
 git remote add origin git@server_name:path/repo_name.git
 ```
+远程库如已绑定，使用命定删除
+```
+git remote rm origin
+```
 这里使用的命令是
 `git remote add origin git@github.com:HuChanghong/learngit.git`
 
@@ -326,6 +330,10 @@ git stash
 
 ### 多人协作
 多人协作的工作模式通常是这样：
+>* 可创建远程origin的分支到本地
+```
+git checkout -b <branch-name> origin/dev
+```
 
 >* 首先，可以试图用`git push origin <branch-name>`推送自己的修改；
 >* 如果推送失败，则因为远程分支比你的本地更新，需要先用`git pull`试图合并；
