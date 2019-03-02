@@ -355,7 +355,7 @@ git checkout -b <branch-name> origin/<branch-name>
 >* 使用命令git branch -a 查看所有分支
 >* 其中，remote/origin/master表示的是远程分支
 >* 使用命令 git push origin --delete Chapater6   可以删除远程分支Chapater6   
->* 使用命令，git branch -d Chapater8 可以删除本地分支（在主分支中）
+>* 使用命令，git branch -d Chapater8 可以删除本地分支（在主分支中） 
 
 ### rebase
 
