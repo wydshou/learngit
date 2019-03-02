@@ -28,6 +28,7 @@
     * [Bug分支](#bug%E5%88%86%E6%94%AF)
     * [Feature分支](#feature%E5%88%86%E6%94%AF)
     * [多人协作](#%E5%A4%9A%E4%BA%BA%E5%8D%8F%E4%BD%9C)
+    * [删除远程本地分支](#%e5%88%a0%e9%99%a4%e8%bf%9c%e7%a8%8b%e6%9c%ac%e5%9c%b0%e5%88%86%e6%94%af)
     * [rebase](#rebase)
   * [标签管理](#%E6%A0%87%E7%AD%BE%E7%AE%A1%E7%90%86)
     * [创建标签](#%E5%88%9B%E5%BB%BA%E6%A0%87%E7%AD%BE)
@@ -332,7 +333,7 @@ git stash
 多人协作的工作模式通常是这样：
 >* 可创建远程origin的分支到本地
 ```
-git checkout -b <branch-name> origin/dev
+git checkout -b <branch-name> origin/<branch-name>
 ```
 
 >* 首先，可以试图用`git push origin <branch-name>`推送自己的修改；
@@ -349,6 +350,12 @@ git checkout -b <branch-name> origin/dev
 * 在本地创建和远程分支对应的分支，使用`git checkout -b branch-name origin/branch-name`，本地和远程分支的名称最好一致；
 * 建立本地分支和远程分支的关联，使用`git branch --set-upstream-to=origin/branch-name branch-name`；
 * 从远程抓取分支，使用`git pull`，如果有冲突，要先处理冲突。
+
+### 删除远程本地分支
+>* 使用命令git branch -a 查看所有分支
+>* 其中，remote/origin/master表示的是远程分支
+>* 使用命令 git push origin --delete Chapater6   可以删除远程分支Chapater6   
+>* 使用命令，git branch -d Chapater8 可以删除本地分支（在主分支中）
 
 ### rebase
 
