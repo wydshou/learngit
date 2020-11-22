@@ -5,8 +5,9 @@
     * [安装Git](#%E5%AE%89%E8%A3%85git)
     * [创建版本库repository](#%E5%88%9B%E5%BB%BA%E7%89%88%E6%9C%AC%E5%BA%93repository)
     * [把文件添加到版本库](#%E6%8A%8A%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E7%89%88%E6%9C%AC%E5%BA%93)
-      * [1\.把文件添加到暂存区](#1%E6%8A%8A%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E6%9A%82%E5%AD%98%E5%8C%BA)
-      * [2\.把文件提交到版本库](#2%E6%8A%8A%E6%96%87%E4%BB%B6%E6%8F%90%E4%BA%A4%E5%88%B0%E7%89%88%E6%9C%AC%E5%BA%93)
+      * [1\.忽略文件](%E5%BF%BD%E7%95%A5%E6%96%87%E4%BB%B6)
+      * [2\.把文件添加到暂存区](#1%E6%8A%8A%E6%96%87%E4%BB%B6%E6%B7%BB%E5%8A%A0%E5%88%B0%E6%9A%82%E5%AD%98%E5%8C%BA)
+      * [3\.把文件提交到版本库](#2%E6%8A%8A%E6%96%87%E4%BB%B6%E6%8F%90%E4%BA%A4%E5%88%B0%E7%89%88%E6%9C%AC%E5%BA%93)
     * [Git bash操作文件及文件夹命令](#git-bash%E6%93%8D%E4%BD%9C%E6%96%87%E4%BB%B6%E5%8F%8A%E6%96%87%E4%BB%B6%E5%A4%B9%E5%91%BD%E4%BB%A4)
     * [查看Git安装目录](#%E6%9F%A5%E7%9C%8Bgit%E5%AE%89%E8%A3%85%E7%9B%AE%E5%BD%95)
   * [时光穿梭机](#%E6%97%B6%E5%85%89%E7%A9%BF%E6%A2%AD%E6%9C%BA)
@@ -46,7 +47,7 @@
 >集中式的版本控制,本地没有历史记录,完整的仓库只存在服务器上,如果服务器挂了,就全都挂了,而分布式如果github挂了可以重建一个服务器,然后把任何一个人的仓库clone过去
 *一句话总结:分布式版本控制的每个节点都是完整仓库*
 
-* [Git下载地址](https://git-for-windows.github.io/ )
+* [Git下载地址](https://git-for-windows.github.io/ )，官网下载太慢，我们可以使用淘宝镜像下载：[Git淘宝下载地址](http://npm.taobao.org/mirrors/git-for-windows/)
 * [Git User Manual](https://mirrors.edge.kernel.org/pub/software/scm/git/docs/user-manual.html)
 * [Git中文手册](https://git-scm.com/book/zh/v2)
 
@@ -55,11 +56,17 @@
 $ git --help     //不知道怎么办就看帮助呗
 ```
 ## Git简介
-略
+
 ### 安装Git
 
 下载并安装Git,安装完成后，还需要最后一步设置  
-`Git Bash`命令行输入：
+查看git配置文件信息：
+```
+git config --system --list  查看系统config
+git config --gloabl --list  查看当前用户配置
+```
+
+>`Git Bash`设置用户名与邮箱（用户标识，必要）：
 ```
 $ git config --global user.name "Your Name"
 $ git config --global user.email "email@example.com"
@@ -99,14 +106,25 @@ $ vi readme.txt
 |:q!| 不保存文件,强制退出vi|
 |:e! |放弃所有修改,从上次保存文件开始再编辑|
 
+#### 1.忽略文件
+有些时候我们不想把某些文件纳入版本控制中，比如数据库文件，临时文件，设计文件等
+```
+*.txt        #忽略所有 .txt结尾的文件,这样的话上传就不会被选中！
+!lib.txt     #但lib.txt除外
+/temp        #仅忽略项目根目录下的TODO文件,不包括其它目录temp
+build/       #忽略build/目录下的所有文件
+doc/*.txt    #会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
+public/*
+!public/document/  #会忽略除document外整个public文件
+```
 
-#### 1.把文件添加到暂存区
+#### 2.把文件添加到暂存区
 使用`git add file_name` 或 `git stage file_name`
 ```
 $ git add readme.txt
 ```
 
-#### 2.把文件提交到版本库
+#### 3.把文件提交到版本库
 ```
 $ git commit -m "wrote a readme file"  
 ```
